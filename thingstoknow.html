@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Things to Know</title>
+    <link rel="stylesheet" href="thingstoknow.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Things You <span>need to know</span></h1>
+      <p class="subtitle">
+        Essential knowledge for staying safe and smart online.
+      </p>
+
+      <div class="card-grid">
+        <!-- Example Card -->
+        <div class="card">
+          <img src="assets/internet.jpg" alt="Internet" />
+          <h4>The Internet</h4>
+          <div class="text-wrapper">
+            <p
+              class="text"
+              data-full-text="The Internet is what connects us to the rest of the world. It is what allows us to talk to our friends and family from anywhere! Many of the devices we use such as phones, computers and ipads use the internet. Apps like Youtube, Instagram, Snapchat and other social media use the internet."
+            ></p>
+          </div>
+          <button class="read-more-btn">
+            <span class="btn-label">Read More</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+        </div>
+        <div class="card">
+          <img src="assets/footprint.jpg" alt="Footprint" />
+          <h4>Digital Footprint</h4>
+          <div class="text-wrapper">
+            <p
+              class="text"
+              data-full-text="Your digital footprint is the information trail you add to every time you use the internet.
+              A person's digital footprint can grow in different ways, such as through social media posts, newsletter subscriptions, online reviews, and online shopping.
+             "
+            ></p>
+          </div>
+          <button class="read-more-btn">
+            <span class="btn-label">Read More</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+        </div>
+        <div class="card">
+          <img src="assets/personalinfo.jpg" alt="Personal" />
+          <h4>Personal Information</h4>
+          <div class="text-wrapper">
+            <p
+              class="text"
+              data-full-text="Personal information, also called personal data, is any information that relates to a specific person. Examples include names, mailing address, email address, phone number, and medical records
+              Make sure your password is not all the same for all of your online platforms"
+            ></p>
+          </div>
+          <button class="read-more-btn">
+            <span class="btn-label">Read More</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+        </div>
+        <div class="card">
+          <img src="assets/password.jpg" alt="Passwords" />
+          <h4>Password</h4>
+          <div class="text-wrapper">
+            <p
+              class="text"
+              data-full-text="a secret word or phrase that must be used to gain admission to something
+              A good password should contain uppercase letters, lowercase letters, symbols, and numbers
+              Ex: examplE_098
+              This make it harder for people to figure out your password, making it more secure.
+              
+              TIP: Don't have the same password for all of your applications. Make them memorable but different!
+              "
+            ></p>
+          </div>
+          <button class="read-more-btn">
+            <span class="btn-label">Read More</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+        </div>
+        <div class="card">
+          <img src="assets/phishing.jpg" alt="Phishing" />
+          <h4>Phishing</h4>
+          <div class="text-wrapper">
+            <p
+              class="text"
+              data-full-text="Phishing is a way hackers mislead people into giving them their personal data.
+              Emails are the main place where phishing scams happen.
+              Example: An email from a bank tells the victim that their account has been hacked and that they must enter their credit card details in order to get it back. The email then gives a fake link to put the information. This is an example of phishing.
+              "
+            ></p>
+          </div>
+          <button class="read-more-btn">
+            <span class="btn-label">Read More</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+        </div>
+        <div class="card">
+          <img src="assets/cyberbull.jpg" alt="Cyberbullying" />
+          <h4>CyberBullying</h4>
+          <div class="text-wrapper">
+            <p
+              class="text"
+              data-full-text="Cyberbullying is bullying that happens online mainly in social media. It is repeated behaviour, aimed at scaring, angering or shaming those who are targeted.This is an important topic and one of the biggest risks for kids online. About 20-30% of kids have been bullied online in their lifetime while 10% have reported having been one. Around 95% of kids have access to the the internet which means that cyberbullying is very common online. In order to prevent this from happening, talk to a trusted adult such as a parent, family member, teacher or counselor. You can also report them on social media platforms or block with the help of a trusted adult, and the platform will do their part to keep you and their users safe.
+              "
+            ></p>
+          </div>
+          <button class="read-more-btn">
+            <span class="btn-label">Read More</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const CHAR_LIMIT = 150;
+
+      const allCards = document.querySelectorAll(".card");
+
+      allCards.forEach((card) => {
+        const p = card.querySelector(".text");
+        const fullText = p.dataset.fullText.trim();
+        const truncated =
+          fullText.slice(0, CHAR_LIMIT) +
+          (fullText.length > CHAR_LIMIT ? "..." : "");
+        p.textContent = truncated;
+        p.dataset.truncated = truncated;
+        p.dataset.expanded = "false";
+
+        const btn = card.querySelector(".read-more-btn");
+        const icon = btn.querySelector("i");
+        const label = btn.querySelector(".btn-label");
+        const wrapper = card.querySelector(".text-wrapper");
+
+        btn.addEventListener("click", () => {
+          const isExpanded = p.dataset.expanded === "true";
+
+          // Collapse all other cards
+          allCards.forEach((otherCard) => {
+            if (otherCard !== card) {
+              const otherP = otherCard.querySelector(".text");
+              const otherBtn = otherCard.querySelector(".read-more-btn");
+              const otherIcon = otherBtn.querySelector("i");
+              const otherLabel = otherBtn.querySelector(".btn-label");
+              const otherWrapper = otherCard.querySelector(".text-wrapper");
+
+              otherP.textContent = otherP.dataset.truncated;
+              otherP.dataset.expanded = "false";
+              otherCard.classList.remove("expanded");
+              otherWrapper.classList.remove("fade");
+              otherLabel.textContent = "Read More";
+              otherIcon.classList.remove("bi-chevron-up");
+              otherIcon.classList.add("bi-chevron-down");
+            }
+          });
+
+          // Toggle current card
+          p.textContent = isExpanded ? p.dataset.truncated : fullText;
+          p.dataset.expanded = (!isExpanded).toString();
+          card.classList.toggle("expanded", !isExpanded);
+          wrapper.classList.toggle("fade", !isExpanded);
+          label.textContent = isExpanded ? "Read More" : "Read Less";
+          icon.classList.toggle("bi-chevron-down", isExpanded);
+          icon.classList.toggle("bi-chevron-up", !isExpanded);
+
+          if (!isExpanded) {
+            card.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
